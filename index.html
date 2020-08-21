@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <h1 class="logo"><img></h1>
+
+            <nav>
+                <ul>
+                    <li><a href="#">Finding Value</a></li>
+                    <li><a href="market.html">Today's Market</a></li>
+                    <div class="wrap">
+                        <div class="search searchbar">
+                            <input type="text" class="searchTerm" placeholder="Enter a ticker symbol...">
+                            <button type="submit" class="searchButton">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class=main>
+        <h1 id=IBM-dividend-per-share>Dividend Per Share:</h1>
+        <h1 id=IBM-forward-pe>Forward PE:</h1>
+        <h1 id=IBM-trailing-pe>Backward PE:</h1>
+        <h1 id=IBM-shares-outstanding>Shares Outstanding:</h1>
+        <h1 id=IBM-50-Day-Moving-Average>50 Day Moving Average:</h1>
+        <h1 id=projected-value>Projected Value:</h1>
+
+
+        <script>
+            async function getData(ticker) {
+                let stockdata = await fetch('https://www.alphavantage.co/query?function=OVERVIEW&datatype=json&symbol=' + ticker + '&interval=5min&apikey=4J31F0KZJROKQEPQ');
+
+                let overview = await stockdata.json();
+                console.log(overview);
+
+                document.getElementById("IBM-dividend-per-share").innerText = overview.Name + " Dividend Per Share: " + overview["DividendPerShare"];
+
+                document.getElementById("IBM-forward-pe").innerText = overview.Name + " Forward PE: " + overview["ForwardPE"];
+
+                document.getElementById("IBM-trailing-pe").innerText = overview.Name + " Trailing PE: " + overview["TrailingPE"];
+
+                document.getElementById("IBM-shares-outstanding").innerText = overview.Name + " Shares Outstanding: " + overview["SharesOutstanding"];
+
+                document.getElementById("IBM-50-Day-Moving-Average").innerText = overview.Name + " 50 Day Moving Average: " + overview["50DayMovingAverage"]
+
+                document.getElementById("company-name").innerText = overview.Name;
+
+            }
+
+            async function getWisdom() {
+                let quotedata = await fetch('https://my-quotes-api.herokuapp.com/api/quotes?limit=1&category=money');
+                let quote = await quotedata.json();
+
+                document.getElementById("quote").innerText = quote;
+
+            }
+
+            async function getValue(ticker) {
+                let overview_data = await fetch('https://www.alphavantage.co/query?function=OVERVIEW&datatype=json&symbol=' + ticker + '&interval=5min&apikey=4J31F0KZJROKQEPQ');
+                let overview = await overview_data.json();
+
+                let shortterm_data = await fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&datatype=json&symbol=' + ticker + '&interval=5min&apikey=4J31F0KZJROKQEPQ');
+                let daily_reports = await shortterm_data.json();
+
+
+                let monthly_data = await fetch('https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&datatype=json&symbol=' + ticker + '&apikey=4J31F0KZJROKQEPQ');
+                let monthly_reports = await monthly_data.json();
+
+                var EPS = overview["EPS"];
+                // eps ttm
+
+                var growth_rate = 12;
+                // growth rate 
+
+                var stockprice = daily_reports["close"];
+                // the closing price of the day
+
+                var minimum_rate = 15;
+                // minimum rate of return
+
+                var safety_margin = 30;
+                // margin of safety
+
+                var PE = overview["ForwardPE"];
+                // PE ratio
+
+                var initialvalue = monthly_reports["1999, open"];
+                // the earliest (tracked by av) stock price per share
+
+                var lastvalue = daily_reports["close"];
+                // the latest stock price per share
+
+                var years = 10;
+                // the amount of years I want to use in my projection
+
+                var projectedvalue = (((initialvalue / lastvalue) ^ (1 / years) - 1) * PE)
+                // my 10 year projection
+
+                document.getElementById("projected-value").innerText = "ProjectedValue: " + projectedvalue;
+
+
+            }
+
+            getData('MSFT')
+
+        </script>
+    </div>
+</body>
+
+
+</html>
