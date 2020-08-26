@@ -31,9 +31,9 @@
             <h1 id=#explainmessage>Here, we use programming to <span class="blue">find value</span> in the stock market. Search any ticker
                 symbol using the search box. </h1>
         </div>
-        <div class="searchbox">
-            <input type="text" id="searchinput" onkeyup="search()" placeholder=" Enter ticker symbol...">
-        </div>
+        <form class="searchbox" action="stock.html" method="GET">
+            <input type="text" id="searchinput" name="stock" placeholder=" Enter ticker symbol...">
+        </form>
 
 
         <script>
