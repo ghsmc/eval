@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>WhySpike</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1 class="inline"><img src=logo2.png alt="logo2" style="width:60px;height:50px;"><img src=text.png
+                        alt="text" style="width:140px;height:20px;padding-bottom: 1rem; padding-left: 0.8rem;"></h1>
+
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="search.html">Search Tickers</a></li>
+                    <li><a href="#">General News</a></li>
+                    <li><a href="#">Stock Market News</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main">
+        <div class="is-top-centered">
+            <h1 class="blue welcome-message">Welcome to EVAL.</h1>
+            <h1 id=#explainmessage>Here, we use programming to <span class="blue">find value</span> in the stock market. Search any ticker
+                symbol using the search box. </h1>
+        </div>
+        <div class="searchbox">
+            <input type="text" id="searchinput" onkeyup="search()" placeholder=" Enter ticker symbol...">
+        </div>
+
+
+        <script>
+            async function search() {
+                let ticker = document.querySelector("#searchinput").value.toUpperCase;
+                
+                let searchdata = await fetch('https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=' + ticker + '&apikey=U24GMPS0SXZPXEXK');
+
+                let search = await searchdata.json;
+
+                console.log(searchdata);
+                console.log(search);
+            }
+        </script>
+    </div>
+</body>
+
+
+
+</html>

@@ -1,0 +1,164 @@
+
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,600');
+body {
+	margin: 0;
+	background: black;
+    font-weight: 800;
+    font-family: axisfont;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgb(153, 0, 255);
+  
+}
+
+.inline {
+    display: inline;
+}
+
+.welcome-message {
+    font-family: axis;
+    text-align: center;
+    font-size: 2.5em;
+}
+@font-face {
+    font-family: axisfont;
+    src: "axis.otf";
+  }
+
+.main {
+    max-width: 40rem;
+    margin-left: auto;
+    margin-right: auto;
+    background: black;
+}
+
+@font-face {
+    src: url(axis.otf);
+    font-family: axis;
+}
+#searchinput {
+    font-size: 2.68em;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 1rem;
+    font-family: axis;
+    background: rgba(15, 14, 14, 0.965);
+    border: none;
+    margin-top: 1rem;
+    color: rgb(119, 0, 255);
+}
+
+#photo {
+    height: 50px;
+    width: 50px;
+}
+
+.is-centered {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  
+}
+
+
+.is-top-centered {
+    margin-top: 7rem;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: rgba(15, 14, 14, 0.965);
+}
+
+.blue {
+    color: rgb(98, 0, 255);
+}
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,600');
+body {
+	margin: 0;
+	background: black(7, 7, 7);
+	font-family: 'Work Sans', sans-serif;
+	font-weight: 800;
+}
+
+.container {
+	width: 90%;
+	margin: 0 auto;
+}
+
+header {
+  background: black;
+}
+
+header::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.logo {
+  float: left;
+  padding: 10px 0;
+  color: rgb(98, 0, 255);
+  text-align: center;
+}
+
+#explainmessage {
+    font-size: 0.2rem;
+}
+
+.data {
+  color: rgb(153, 0, 255);
+  display: inline-block;
+  font-size: 0.4rem;
+}
+
+nav {
+  float: right;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav li {
+  display: inline-block;
+  margin-left: 70px;
+  padding-top: 23px;
+
+  position: relative;
+}
+
+nav a {
+  color: rgb(153, 0, 255);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: rgba(0, 140, 255, 0.89);
+}
+
+nav a::before {
+  content: '';
+  display: block;
+  height: 5px;
+  background-color: rgb(217, 0, 255);
+
+  position: absolute;
+  top: 0;
+  width: 0%;
+
+  transition: all ease-in-out 250ms;
+}
+
+nav a:hover::before {
+  width: 100%;
+}
