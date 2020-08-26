@@ -32,6 +32,10 @@ body {
     background: black;
 }
 
+.searchbox {
+  color: rgb(119, 0, 255);
+}
+
 @font-face {
     src: url(axis.otf);
     font-family: axis;
@@ -54,7 +58,7 @@ body {
 }
 
 .is-centered {
-  display: block;
+  width: 50%;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
