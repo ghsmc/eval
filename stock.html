@@ -11,7 +11,7 @@
         <div class="container">
             <div class="logo">
                 <h1 class="inline"><img src=logo2.png alt="logo2" style="width:60px;height:50px;"><img src=text.png
-                        alt="text" style="width:140px;height:20px;padding-bottom: 1rem; padding-left: 0.8rem;"></h1>
+                        alt="text" style="width:80px;height:20px;padding-bottom: 0.9rem; padding-left: 0.8rem;"></h1>
 
             </div>
             <nav>
@@ -28,12 +28,12 @@
     <div class="main">
         <div class="is-top-centered">
             <h1 class="blue welcome-message" id="company-name">Loading...</h1>
-            <div class="data">
-                <h1 id="pps"></h1>
-                <h1 id="target"></h1>
-                <h1 id="dividend"></h1>
-                <h1 id="PERatio"></h1>
-                <h1 id="market-cap"></h1>
+            <div class="data" class="inline">
+                <span class="individual-data" id="pps"></span>
+                <span class="individual-data" id="target"></span>
+                <span class="individual-data" id="dividend"></span>
+                <span class="individual-data" id="PERatio"></span>
+                <span class="individual-data" id="market-cap"></span>
             </div>
         </div>
        
@@ -63,11 +63,17 @@
 
                 document.getElementById("company-name").innerText = overview["Name"];
 
-                document.getElementById("pps").innerText = daily_reports["50DayMovingAverage"];
-                document.getElementById("target").innerText = overview["AnalystTargetPrice"];
-                document.getElementById("PERatio").innerText = overview["PERatio"];
-                document.getElementById("dividend").innerText = overview["DividendPerShare"];
-                document.getElementById("market-cap").innerText = overview["SharesOutstanding"] * overview["50DayMovingAverage"];
+                document.getElementById("pps").innerText = overview["50DayMovingAverage"] + " p/s";
+                document.getElementById("target").innerText = overview["AnalystTargetPrice"] + " target";
+                document.getElementById("PERatio").innerText = overview["PERatio"] + " PE";
+                document.getElementById("dividend").innerText = overview["DividendPerShare"] + " dividend";
+
+                if (overview["SharesOutstanding"] * overview["50DayMovingAverage"] > ) {
+
+                }
+                document.getElementById("market-cap").innerText = overview["SharesOutstanding"] * overview["50DayMovingAverage"] + " market cap";
+
+
             }
 
             getValue('IBM')

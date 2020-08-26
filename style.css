@@ -36,10 +36,22 @@ body {
   color: rgb(119, 0, 255);
 }
 
+.individual-data {
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  background: black;
+  display: block;
+  text-align: center;
+}
+
 @font-face {
     src: url(axis.otf);
     font-family: axis;
 }
+
+
 #searchinput {
     font-size: 2.68em;
     margin-left: auto;
