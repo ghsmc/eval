@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>WhySpike</title>
+    <title>EVAL</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -25,10 +25,10 @@
         </div>
     </header>
 
-    <div class="main">
+    <div class="stockmain">
         <div class="is-top-centered">
             <h1 class="blue welcome-message" id="company-name">Loading...</h1>
-            <div class="data" class="inline">
+            <div class="data" style="text-align: center;">
                 <span class="individual-data" id="pps"></span>
                 <span class="individual-data" id="target"></span>
                 <span class="individual-data" id="dividend"></span>
@@ -36,13 +36,19 @@
                 <span class="individual-data" id="market-cap"></span>
             </div>
         </div>
-       
+
+        <div class="is-centered value">
+            <span id="value">Loading...</span>
+        </div>
+
+
+
 
 
         <script>
             async function search() {
                 let ticker = document.querySelector("#searchinput").value.toUpperCase;
-                
+
                 let searchdata = await fetch('https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=' + ticker + '&apikey=U24GMPS0SXZPXEXK');
 
                 let search = await searchdata.json;
@@ -51,8 +57,12 @@
                 console.log(search);
             }
 
+            var url_string = (window.location.href).toLowerCase();
+            var url = new URL(url_string);
+            var ticker = url.searchParams.get("stock");
+
             async function getValue(ticker) {
-                let overview_data = await fetch('https://www.alphavantage.co/query?function=OVERVIEW&datatype=json&symbol=' + ticker + '&interval=5min&apikey=4J31F0KZJROKQEPQ');
+                let overview_data = await fetch('https://www.alphavantage.co/query?function=OVERVIEW&datatype=json&symbol=' + ticker + '&interval=5min&apikey=TN7JQP2M7W6ZJZ95');
                 let overview = await overview_data.json();
 
                 let shortterm_data = await fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&datatype=json&symbol=' + ticker + '&interval=5min&apikey=4J31F0KZJROKQEPQ');
@@ -67,12 +77,26 @@
                 document.getElementById("target").innerText = overview["AnalystTargetPrice"] + " target";
                 document.getElementById("PERatio").innerText = overview["PERatio"] + " PE";
                 document.getElementById("dividend").innerText = overview["DividendPerShare"] + " dividend";
-                document.getElementById("market-cap").innerText = overview["SharesOutstanding"] * overview["50DayMovingAverage"] + " market cap";
+                document.getElementById("market-cap").innerText = numberWithCommas(Math.round(overview["SharesOutstanding"] * overview["50DayMovingAverage"])) + " market cap";
 
+                function numberWithCommas(x) {
+                    var parts = x.toString().split(".");
+                    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                    return parts.join(".");
+                }
+
+                var difference = (overview["AnalystTargetPrice"] - overview["50DayMovingAverage"])
+                var value = (difference /overview["50DayMovingAverage"]) * 100;
+
+                document.getElementById("value").innerText = Math.round(value) + "%";
+
+
+                document.getElementById("value").innerText = Math.round(value) + "%"
 
             }
 
-            getValue('MSFT')
+
+            getValue('ticker')
         </script>
     </div>
 </body>
