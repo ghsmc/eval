@@ -112,6 +112,9 @@ body {
     color: rgb(119, 0, 255);
 }
 
+  ::placeholder {
+    color: rgb(98, 0, 255);
+  }
 #photo {
     height: 50px;
     width: 50px;
