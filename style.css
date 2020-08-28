@@ -81,7 +81,15 @@ body {
 
 .searchbox {
   color: rgb(119, 0, 255);
-  margin-left: 24.5rem;
+  display: block;
+  text-align: center;
+}
+
+.form {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
 }
 
 .individual-data {
@@ -90,6 +98,7 @@ body {
   font-size: 0.8rem;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
+  margin-top: 1rem;
 }
 
 @font-face {
@@ -102,8 +111,6 @@ body {
 
 #searchinput {
     font-size: 2.57em;
-    margin-left: auto;
-    margin-right: auto; 
     padding-bottom: 1rem;
     font-family: axis;
     background: rgba(15, 14, 14, 0.965);
