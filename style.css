@@ -24,17 +24,34 @@ body {
 }
 
 .value {
-  padding: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 2rem;
   background:rgba(15, 14, 14, 0.965);
-  font-family: axis;
-  font-size: 10rem;
+  margin-top: 2rem;
+  text-align: center;
+  display: inline-block;
+  margin-right: 0.2rem;
 }
+
+.valuetext {
+  font-family: axis;
+  font-size: 4rem;
+}
+
+.valueintro {
+  font-size: 1rem;
+  background: black;
+  padding: 1rem;
+}
+
 
 .welcome-message {
     font-family: axis;
     text-align: center;
     font-size: 2.5em;
 }
+
 @font-face {
     font-family: axisfont;
     src: "axis.otf";
@@ -48,14 +65,23 @@ body {
 }
 
 .stockmain {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  background: black;
+}
+
+.stockmain2 {
   max-width: 50rem;
   margin-left: auto;
   margin-right: auto;
   background: black;
 }
 
+
 .searchbox {
   color: rgb(119, 0, 255);
+  margin-left: 24.5rem;
 }
 
 .individual-data {
@@ -72,10 +98,12 @@ body {
 }
 
 
+
+
 #searchinput {
     font-size: 2.57em;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: auto; 
     padding-bottom: 1rem;
     font-family: axis;
     background: rgba(15, 14, 14, 0.965);
@@ -94,8 +122,14 @@ body {
   text-align: center;
 }
 
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
 
-.is-top-centered {
+
+.is-top-centered_search {
     margin-top: 7rem;
     margin-bottom: auto;
     margin-left: auto;
@@ -105,6 +139,18 @@ body {
     padding-top: 0.4rem;
     padding-bottom: 1rem;
     background-color: rgba(15, 14, 14, 0.965);
+}
+
+.is-top-centered_stock {
+  margin-top: 5rem;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.4rem;
+  padding-bottom: 1rem;
+  background-color: rgba(15, 14, 14, 0.965);
 }
 
 .blue {
