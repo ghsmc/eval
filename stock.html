@@ -92,7 +92,7 @@
 
             document.getElementById("company-name").innerText = overview["Name"];
 
-            document.getElementById("pps").innerText = overview['50DayMovingAverage'] + " Moving Average";
+            document.getElementById("pps").innerText = Math.round(overview['50DayMovingAverage']) + " Moving Average";
             document.getElementById("target").innerText = overview["AnalystTargetPrice"] + " target";
             document.getElementById("PERatio").innerText = Math.round(overview["PERatio"]) + " PE";
             document.getElementById("valueintro").innerText = ticker.toUpperCase() + " is undervalued by:";
