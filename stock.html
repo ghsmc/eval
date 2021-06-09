@@ -19,8 +19,7 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="search.html">EVAL: Find Value</a></li>
-
-                    <li><a href="search.html">Stock News</a></li>
+                    <li><a href="https://gmccain.com">Who Built This?</a></li>
                 </ul>
             </nav>
         </div>
@@ -83,14 +82,19 @@
             let shortterm_data = await fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&datatype=json&symbol=' + ticker + '&interval=5min&apikey=4J31F0KZJROKQEPQ');
             let daily_reports = await shortterm_data.json();
 
+            let globalquote_data = await fetch('https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=' + ticker + '&apikey=4J31F0KZJROKQEPQ');
+            let dailyprice = await globalquote_data.json();
+
             let monthly_data = await fetch('https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&datatype=json&symbol=' + ticker + '&apikey=4J31F0KZJROKQEPQ');
             let monthly_reports = await monthly_data.json();
 
+            
+
             document.getElementById("company-name").innerText = overview["Name"];
 
-            document.getElementById("pps").innerText = overview["50DayMovingAverage"] + " p/s";
+            document.getElementById("pps").innerText = overview['50DayMovingAverage'] + " Moving Average";
             document.getElementById("target").innerText = overview["AnalystTargetPrice"] + " target";
-            document.getElementById("PERatio").innerText = overview["PERatio"] + " PE";
+            document.getElementById("PERatio").innerText = Math.round(overview["PERatio"]) + " PE";
             document.getElementById("valueintro").innerText = ticker.toUpperCase() + " is undervalued by:";
 
             if (overview["DividendPerShare"] == "None") {
